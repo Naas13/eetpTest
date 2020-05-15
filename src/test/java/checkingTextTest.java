@@ -12,7 +12,7 @@ public class checkingTextTest {
 
     @Before
     public void start() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\admin\\IdeaProjects\\roseltorg\\drivers\\chromedriver.exe"); //путь к локальному chromedriver.exe
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\admin\\IdeaProjects\\roseltorg\\drivers\\chromedriver.exe"); //РїСѓС‚СЊ Рє Р»РѕРєР°Р»СЊРЅРѕРјСѓ chromedriver.exe
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -21,29 +21,29 @@ public class checkingTextTest {
     @Test
     public void checkingText() {
 
-        // Переход на страницу ЕЭТП
+        // РџРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ Р•Р­РўРџ
         driver.get("https://yandex.ru");
         WebElement searchInput = driver.findElement(By.id("text"));
-        searchInput.sendKeys("ЕЭТП");
+        searchInput.sendKeys("Р•Р­РўРџ");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         driver.findElement(By.xpath("//b[text()='Roseltorg.ru']")).click();
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
 
-        // Переход на страницу Поставщика
+        // РџРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ РџРѕСЃС‚Р°РІС‰РёРєР°
         driver.findElement(By.xpath("//button[@class='auth-menu__btn auth-menu__btn--register js-register-popup-link']")).click();
 
-        // Переход на форму регистрации нового пользователя
+        // РџРµСЂРµС…РѕРґ РЅР° С„РѕСЂРјСѓ СЂРµРіРёСЃС‚СЂР°С†РёРё РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
         driver.findElement(By.xpath("//a[@class='auth-window__selector-link js-supplier-register-link']")).click();
-        String text = "Единая аккредитация для участия в корпоративных закупках и закупках субъектов 223-ФЗ";
+        String text = "Р•РґРёРЅР°СЏ Р°РєРєСЂРµРґРёС‚Р°С†РёСЏ РґР»СЏ СѓС‡Р°СЃС‚РёСЏ РІ РєРѕСЂРїРѕСЂР°С‚РёРІРЅС‹С… Р·Р°РєСѓРїРєР°С… Рё Р·Р°РєСѓРїРєР°С… СЃСѓР±СЉРµРєС‚РѕРІ 223-Р¤Р—";
         driver.findElement( By.xpath("//a[text()='" + text + "']")).click();
 
-        // Проверка наличия текста
-        String foundText = "Если Вы приобрели новую электронную подпись в связи с истечением срока действия старой, то Вам следует загрузить ее в профиле зарегистрированного пользователя, а не регистрировать нового пользователя";
+        // РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ С‚РµРєСЃС‚Р°
+        String foundText = "Р•СЃР»Рё Р’С‹ РїСЂРёРѕР±СЂРµР»Рё РЅРѕРІСѓСЋ СЌР»РµРєС‚СЂРѕРЅРЅСѓСЋ РїРѕРґРїРёСЃСЊ РІ СЃРІСЏР·Рё СЃ РёСЃС‚РµС‡РµРЅРёРµРј СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ СЃС‚Р°СЂРѕР№, С‚Рѕ Р’Р°Рј СЃР»РµРґСѓРµС‚ Р·Р°РіСЂСѓР·РёС‚СЊ РµРµ РІ РїСЂРѕС„РёР»Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, Р° РЅРµ СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ";
         if (driver.findElement(By.xpath("//div[@id='ext-gen86']")).getText().equals(foundText)){
-            System.out.println("Текст найден");
+            System.out.println("РўРµРєСЃС‚ РЅР°Р№РґРµРЅ");
         } else {
-            System.out.println("Текст не найден");
+            System.out.println("РўРµРєСЃС‚ РЅРµ РЅР°Р№РґРµРЅ");
         }
     }
 
